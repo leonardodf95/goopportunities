@@ -7,6 +7,17 @@ import (
 	"github.com/leonardodf95/goopportunities/schemas"
 )
 
+// @BasePath /api/v1
+// @Summary Delete Opening
+// @Description Delete a job opening
+// @Tags Opening
+// @Accept json
+// @Produce json
+// @Param id query string true "Opening ID"
+// @Success 200 {object} DeleteOpeningResponse
+// @Failure 404 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /opening [delete]
 func DeleteOpeningHandler(ctx *gin.Context) {
 	id := ctx.Query("id")
 	if id == "" {
