@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
+	"github.com/leonardodf95/goopportunities/schemas"
 )
 
 func SendError(ctx *gin.Context, status int, message string) {
@@ -20,4 +21,14 @@ func SendSuccess(ctx *gin.Context, op string, data interface{}, status int) {
 		"message": fmt.Sprintf("%s successful", op),
 		"data":    data,
 	})
+}
+
+type ErrorResponse struct {
+	Message string `json:"message"`
+	Status  int    `json:"status"`
+}
+
+type CreateOpeningResponse struct {
+	Message string                  `json:"message"`
+	Data    schemas.OpeningResponse `json:"data"`
 }
