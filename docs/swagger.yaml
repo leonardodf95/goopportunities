@@ -35,6 +35,15 @@ definitions:
       status:
         type: integer
     type: object
+  handler.ListOpeningsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/schemas.OpeningResponse'
+        type: array
+      message:
+        type: string
+    type: object
   handler.ShowOpeningResponse:
     properties:
       data:
@@ -152,6 +161,25 @@ paths:
           schema:
             $ref: '#/definitions/handler.ErrorResponse'
       summary: Create Opening
+      tags:
+      - Opening
+  /openings:
+    get:
+      consumes:
+      - application/json
+      description: List openings jobs
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.ListOpeningsResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: List Openings
       tags:
       - Opening
 swagger: "2.0"
